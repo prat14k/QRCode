@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var qrImage: UIImageView!
@@ -22,11 +23,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        textField.becomeFirstResponder()
-    }
+    
     
     @IBAction func generateAction(_ sender: UIButton) {
         

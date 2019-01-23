@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Generate View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="QRGenerateViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,14 +32,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AM1-ll-b9K">
-                                <rect key="frame" x="112" y="268.5" width="150" height="150"/>
+                                <rect key="frame" x="56.5" y="212.5" width="262.5" height="262.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AM1-ll-b9K" secondAttribute="height" multiplier="1:1" id="H4C-Po-RE0"/>
-                                    <constraint firstAttribute="width" constant="150" id="Xp6-HQ-KEP"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jS7-aX-iy1">
-                                <rect key="frame" x="157" y="607" width="60" height="30"/>
+                                <rect key="frame" x="157.5" y="607" width="60" height="30"/>
                                 <state key="normal" title="Read QR"/>
                                 <connections>
                                     <segue destination="Jko-em-cbL" kind="show" id="fiz-Uj-B0Y"/>
@@ -58,6 +56,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jS7-aX-iy1" secondAttribute="bottom" constant="30" id="kOE-Ll-dh0"/>
                             <constraint firstItem="AM1-ll-b9K" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="mfZ-WU-hlc"/>
                             <constraint firstItem="jS7-aX-iy1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="naD-9f-Ts7"/>
+                            <constraint firstItem="AM1-ll-b9K" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="sFl-JR-NqK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -70,19 +69,18 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--View Controller Read-->
+        <!--Read View Controller-->
         <scene sceneID="miS-zM-d0W">
             <objects>
-                <viewController id="Jko-em-cbL" customClass="ViewControllerRead" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jko-em-cbL" customClass="QRReadViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgV-mU-nbf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="s9H-SJ-sWf">
-                                <rect key="frame" x="62" y="193.5" width="250" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="focus" translatesAutoresizingMaskIntoConstraints="NO" id="s9H-SJ-sWf">
+                                <rect key="frame" x="37.5" y="193.5" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="cba-6Z-weX"/>
-                                    <constraint firstAttribute="width" constant="250" id="q6v-eE-D8m"/>
+                                    <constraint firstAttribute="width" secondItem="s9H-SJ-sWf" secondAttribute="height" multiplier="1:1" id="q21-mf-n3V"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -90,11 +88,12 @@
                         <constraints>
                             <constraint firstItem="s9H-SJ-sWf" firstAttribute="centerY" secondItem="IhD-B9-6YP" secondAttribute="centerY" id="cJU-ho-4Bj"/>
                             <constraint firstItem="s9H-SJ-sWf" firstAttribute="centerX" secondItem="IhD-B9-6YP" secondAttribute="centerX" id="i5D-Qz-W1L"/>
+                            <constraint firstItem="s9H-SJ-sWf" firstAttribute="width" secondItem="PgV-mU-nbf" secondAttribute="width" multiplier="0.8" id="k24-9l-8Jv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IhD-B9-6YP"/>
                     </view>
                     <connections>
-                        <outlet property="focusSq" destination="s9H-SJ-sWf" id="IgN-KK-jR0"/>
+                        <outlet property="qrCodeView" destination="s9H-SJ-sWf" id="p6Q-pV-FkQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fpt-Pl-JLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -103,6 +102,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square" width="512" height="512"/>
+        <image name="focus" width="150" height="150"/>
     </resources>
 </document>

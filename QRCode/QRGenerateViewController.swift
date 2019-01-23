@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  QRGenerateViewController.swift
 //  QRCode
 //
 //  Created by Prateek on 30/09/17.
@@ -9,24 +9,13 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class QRGenerateViewController: UIViewController {
 
     @IBOutlet weak var qrImage: UIImageView!
     @IBOutlet weak var textField: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
-    
+   
     @IBAction func generateAction(_ sender: UIButton) {
-        
+        view.endEditing(true)
         if let inputStr = textField.text{
             
             let data = inputStr.data(using: .ascii, allowLossyConversion: false)

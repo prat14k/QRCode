@@ -44,3 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension CIImage {
+    
+    static func createQRCode(from qrString: String) -> CIImage? {
+        let data = qrString.data(using: .isoLatin1, allowLossyConversion: false)
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(data, forKey: "inputMessage")
+        return filter?.outputImage
+    }
+    
+}
+
+extension UIImageView {
+    
+    func set(ciImage: CIImage, scaleToFitBounds fitBounds: Bool) {
+        guard fitBounds  else { image = UIImage(ciImage: ciImage); return; }
+        let scaleX = frame.size.width / ciImage.extent.size.width
+        let scaleY = frame.size.height / ciImage.extent.size.height
+        let transformedImage = ciImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+        image = UIImage(ciImage: transformedImage)
+    }
+    
+}

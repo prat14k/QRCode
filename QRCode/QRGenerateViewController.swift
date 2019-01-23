@@ -11,26 +11,17 @@ import UIKit
 
 class QRGenerateViewController: UIViewController {
 
-    @IBOutlet weak var qrImage: UIImageView!
-    @IBOutlet weak var textField: UITextField!
-   
+    @IBOutlet weak private var qrImage: UIImageView!
+    @IBOutlet weak private var textField: UITextField!
+    private var qrText: String?
+    
     @IBAction func generateAction(_ sender: UIButton) {
         view.endEditing(true)
-        if let inputStr = textField.text{
-            
-            let data = inputStr.data(using: .ascii, allowLossyConversion: false)
-            
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            filter?.setValue(data, forKey: "inputMessage")
-            
-            let img = UIImage(ciImage: (filter?.outputImage)!)
-            
-           
-            qrImage.image = img
-            
-            
-        }
-        
+        guard let inputStr = textField.text, inputStr != qrText,
+              let ciImage = CIImage.createQRCode(from: inputStr)
+        else { return }
+        qrImage.set(ciImage: ciImage, scaleToFitBounds: true)
+        qrText = inputStr
     }
     
 }
